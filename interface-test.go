@@ -9,18 +9,6 @@ import (
 
 func main() {
 	d := &oc.Device{}
-	/*j, err := ygot.EmitJSON(d, &ygot.EmitJSONConfig{
-		Format: ygot.RFC7951,
-		Indent: "  ",
-		RFC7951Config: &ygot.RFC7951JSONConfig{
-			AppendModuleName: true,
-		},
-	})
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("Empty JSON: %v\n", j)
-	*/
 
 	i, err := d.NewInterface("eth0")
 	i.AdminStatus = oc.OpenconfigInterfaces_Interface_AdminStatus_UP
@@ -38,10 +26,6 @@ func main() {
 		Type:        oc.IETFInterfaces_InterfaceType_ethernetCsmacd,
 	}
 
-	/*s, err := d.Interface["eth1"].NewSubinterface(0)
-	if err != nil {
-		panic(fmt.Sprintf("Duplicate subinterface: %v", err))
-	}*/
 
 	json, err := ygot.EmitJSON(d, &ygot.EmitJSONConfig{
 		Format: ygot.RFC7951,
